@@ -7,8 +7,10 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 		
 		if @comment.save
-			flash[:success] = "New comment added, buddy, hope there's nothing offensive in it? :P"
-			redirect_to request.referer || root_path
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
 		else
 			flash[:alert] = "Something went wrong, sorry brah!"
 			render root_path
@@ -21,9 +23,13 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = @post.comments.find(params[:id])
 
-		@comment.destroy
-		flash[:success] = "Why did you do that? :("
-		redirect_to root_path
+		if @comment.user_id == current_user.id
+			@comment.delete
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
+		end
 	end
 
 	private
