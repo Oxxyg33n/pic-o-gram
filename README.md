@@ -1,24 +1,27 @@
-# README
+# Pic-o-gram is an Instagram-like web application made using Ruby on Rails!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Thanks to
+[*reddit user devwalks*](https://www.reddit.com/user/devwalks)
+and his [Photogram e-book](https://www.reddit.com/r/learnprogramming/comments/489tmy/ive_written_a_200_page_ebook_on_how_to_build_an/).
 
-Things you may want to cover:
+[Devwalks' blog](https://www.devwalks.com/)
 
-* Ruby version
+## Getting started
 
-* System dependencies
+To get started with the app, clone the repo and then install the needed gems:
 
-* Configuration
+```
+$ bundle install --without production
+```
 
-* Database creation
+Next, migrate the database:
 
-* Database initialization
+```
+$ rails db:migrate
+```
 
-* How to run the test suite
+Run the server:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ rails server
+```
